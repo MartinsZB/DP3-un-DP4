@@ -40,4 +40,6 @@
     <string name="dp4_timer_serija1_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 1 min.</string>
     <string name="dp4_timer_serija2_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 30 sec.</string>
     <string name="dp4_timer_serija3_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 15 sec.</string>
+    <string name="Timeri_sacensibam">"Sacensības   "</string>
+    <string name="Timeri_sacensibu_info">Sacensību režīmā taimeru skaņas signāli ir izslēgti.</string>
 </resources>
