@@ -3,13 +3,24 @@
     <string name="noteikumi">Noteikumi</string>
     <string name="dp3_noteikumi">DP3 Noteikumi</string>
     <string name="dp4_noteikumi">DP4 Noteikumi</string>
-    <string name="dp3_noteikumuTexts">
-        <b>DP3 Noteikumi</b>
-        <p>šaušana ar dienesta pistoli 25 m distancē, mērķis Nr.4 (melnais aplis), ar vienu vai abām rokām.</p>
+    <string name="dp3_noteikumuTexts"><![CDATA[
+        <b>DP3 Noteikumi</b><br/>
+        <p>Šaušana ar dienesta pistoli 25 m distancē, mērķis Nr.4 (melnais aplis), ar vienu vai abām rokām.</p>
         <ul>3 piešaudes šāvieni, laiks 1 minūte.</ul>
         <ul>30 ieskaites šāvieni 3 sērijās. Laiks 5 minūtes katrai 10 šāvienu sērijai.</ul>
         <ul>Mēlītes nospiediens ne mazāks par 1,360 kg.</ul>
         <ul>Vingrinājumu drīkst izpildīt tikai ar pilnapvalka lodēm (no Angļu val. Full  metal  jacket) tērauda, kapara vai misiņa apvalkā!</ul>
+        ]]>
     </string>
-    <string name="dp4_noteikumuTexts">DP4 Noteikumi</string>
+    <string name="dp4_noteikumuTexts"><![CDATA[
+        <b>DP4 Noteikumi</b><br/>
+        <p>Šaušana ar dienesta pistoli 25 m distancē, mērķis Nr.4 (melnais aplis).</p>
+        <ul>6 piešaudes šāvieni, laiks 3 minūtes.</ul>
+        <ul>6 ieskaites šāvieni 1 minūtē ar vienu roku.</ul>
+        <ul>7 ieskaites šāvieni 30 sekundēs ar vienu vai abām rokām.</ul>
+        <ul>7 ieskaites šāvieni 15 sekundēs ar abām rokām.</ul>
+        <ul>Mēlītes nospiediens ne mazāks par 1,360 kg.</ul>
+        <ul>Vingrinājumu drīkst izpildīt tikai ar pilnapvalka lodēm (no Angļu val. Full  metal  jacket) tērauda, kapara vai misiņa apvalkā!</ul>
+        ]]>
+    </string>
 </resources>
