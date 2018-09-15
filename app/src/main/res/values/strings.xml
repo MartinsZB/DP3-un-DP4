@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DP3 un DP4</string>
-    <string name="noteikumi">Noteikumi</string>
+    <string name="noteikumi">Noteikumi:</string>
     <string name="dp3_noteikumi">DP3 Noteikumi</string>
     <string name="dp4_noteikumi">DP4 Noteikumi</string>
     <string name="dp3_noteikumuTexts"><![CDATA[
@@ -23,4 +23,21 @@
         <ul>Vingrinājumu drīkst izpildīt tikai ar pilnapvalka lodēm (no Angļu val. Full  metal  jacket) tērauda, kapara vai misiņa apvalkā!</ul>
         ]]>
     </string>
+    <string name="dp3_taimeri">DP3 Taimeri</string>
+    <string name="dp4_taimeri">DP4 Taimeri</string>
+    <string name="taimeri">Taimeri:</string>
+    <string name="dp3_timeri_nosaukums">DP3 Timeri</string>
+    <string name="dp3_timeri_piesaude">DP3 Piešaude</string>
+    <string name="dp3_timeri_serija">DP3 ieskaites sērijas</string>
+    <string name="dp3_piesaude_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 1 min.</string>
+    <string name="dp3_serija_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 5 min.</string>
+    <string name="dp4_timeri_nosaukums">DP4 Timeri</string>
+    <string name="dp4_timeri_piesaude">DP4 Piešaude</string>
+    <string name="dp4_timeri_serija_1">DP4 1. Sērija</string>
+    <string name="dp4_timeri_serija_2">DP4 2. Sērija</string>
+    <string name="dp4_timer_serija_3">DP4 3. Sērija</string>
+    <string name="dp4_timeri_piesaude_info">Sagatavoties 1 min. Uzmanību 7sec. Starts 3 min.</string>
+    <string name="dp4_timer_serija1_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 1 min.</string>
+    <string name="dp4_timer_serija2_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 30 sec.</string>
+    <string name="dp4_timer_serija3_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 15 sec.</string>
 </resources>

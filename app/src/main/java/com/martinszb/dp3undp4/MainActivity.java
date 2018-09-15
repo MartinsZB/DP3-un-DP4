@@ -26,4 +26,12 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+    public void openTimersDP3(View view){
+        Intent intent = new Intent(this, DP3TimerActivity.class);
+        startActivity(intent);
+    }
+    public void openTimersDP4(View view){
+        Intent intent = new Intent(this, DP4TimerActivity.class);
+        startActivity(intent);
+    }
 }
