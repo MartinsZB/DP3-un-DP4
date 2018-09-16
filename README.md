@@ -6,7 +6,8 @@ Aplikācija ir plānota lai palīdzētu trennēties un reģistrēt savu progresu
 
 Aplikācijā ir iekļauti disciplīnu noteikumi un timeri ar un bez skaņas.
 
-
+<img src="https://github.com/MartinsZB/DP3-un-DP4/blob/master/Additions/AppDemo.gif" width="30%">
 
 Plānā:
-  1. Mērķu rezultātu pievienošanu
+  1. Mērķu rezultātu pievienošana
+  2. Treniņu piezīmes
