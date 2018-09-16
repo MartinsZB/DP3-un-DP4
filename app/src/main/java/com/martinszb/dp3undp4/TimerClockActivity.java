@@ -41,53 +41,52 @@ public class TimerClockActivity extends AppCompatActivity {
         TextView typeText = findViewById(R.id.textView8);
         TextView compText = findViewById(R.id.textView10);
         if (clockComp){
-            compText.setText("Skaņas signāli izslēgti");
+            compText.setText(getString(R.string.sound_off));
             compText.setTextColor(Color.RED);
         }
         else {
-            compText.setText("Skaņas signāli ieslēgti");
+            compText.setText(getString(R.string.sound_on));
         }
 
 
         if (clockType.equals("DP3") && clockSession == 0){
-            typeText.setText(clockType + " piešaudes sērija");
+            typeText.setText(String.format(getString(R.string.piesaudes_serija),clockType));
             initTimer();
             startTimer(60000,1000,60000,0);
         }
         else if (clockType.equals("DP3") && clockSession == 1){
-            typeText.setText(clockType + " ieskaites sērija");
+            typeText.setText(String.format(getString(R.string.DP3_ieskaites_serija),clockType));
             initTimer();
             startTimer(60000,1000,300000,0);
         }
         else if (clockType.equals("DP4") && clockSession == 0){
-            typeText.setText(clockType + " piešaudes sērija");
+            typeText.setText(String.format(getString(R.string.piesaudes_serija),clockType));
             initTimer();
             startTimer(60000,1000,180000,0);
         }
         else if (clockType.equals("DP4") && clockSession == 1){
-            typeText.setText(clockType + " "+clockSession+". ieskaites sērija");
+            typeText.setText(String.format(getString(R.string.DP4_ieskaites_serija),clockType, clockSession));
             initTimer();
             startTimer(60000,1000,60000,0);
         }
         else if (clockType.equals("DP4") && clockSession == 2){
-            typeText.setText(clockType + " "+clockSession+". ieskaites sērija");
+            typeText.setText(String.format(getString(R.string.DP4_ieskaites_serija),clockType, clockSession));
             initTimer();
             startTimer(60000,1000,30000,0);
         }
         else if (clockType.equals("DP4") && clockSession == 3){
-            typeText.setText(clockType + " "+clockSession+". ieskaites sērija");
+            typeText.setText(String.format(getString(R.string.DP4_ieskaites_serija),clockType, clockSession));
             initTimer();
             startTimer(60000,1000,15000,0);
         }
         else {
-
         }
 
     }
 
     private void initTimer() {
         final TextView sessionText = findViewById(R.id.textView9);
-        sessionText.setText("SAGATAVOTIES");
+        sessionText.setText(getString(R.string.sagatavoties));
     }
 
 
@@ -98,7 +97,7 @@ public class TimerClockActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 if (millisUntilFinished / 1000 == 7 && id == 0) {
-                    sessionText.setText("UZMANĪBU!");
+                    sessionText.setText(getString(R.string.uzmanibu));
                     counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000),(millisUntilFinished % 60000 / 1000)));
                 }
                 else {
@@ -109,11 +108,11 @@ public class TimerClockActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 if (id == 0){
-                    sessionText.setText("STARTS!");
+                    sessionText.setText(getString(R.string.starts));
                     startTimer(shootTime,tick,0,1);
                 }
                 else {
-                    sessionText.setText("STOP!!");
+                    sessionText.setText(getString(R.string.stop));
                 }
 
             }

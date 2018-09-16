@@ -42,4 +42,16 @@
     <string name="dp4_timer_serija3_info">Sagatavoties 1 min. Uzmanību 7 sec. Starts 15 sec.</string>
     <string name="Timeri_sacensibam">"Sacensības   "</string>
     <string name="Timeri_sacensibu_info">Sacensību režīmā taimeru skaņas signāli ir izslēgti.</string>
+    //Timeru lapas teksti
+    <string name="sound_off">Skaņas signāli izslēgti</string>
+    <string name="sound_on">Skaņas signāli ieslēgti</string>
+    <string name="piesaudes_serija">%s piešaudes sērija</string>
+    <string name="DP3_ieskaites_serija">%s ieskaites sērija</string>
+    <string name="DP4_ieskaites_serija">%s %d. ieskaites sērija</string>
+    <string name="sagatavoties">Sagatavoties</string>
+    <string name="uzmanibu">Uzmanību!</string>
+    <string name="starts">Starts!</string>
+    <string name="stop">Stop!!</string>
+
+
 </resources>
