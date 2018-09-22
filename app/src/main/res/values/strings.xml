@@ -52,5 +52,12 @@
     <string name="uzmanibu">Uzmanību!</string>
     <string name="starts">Starts!</string>
     <string name="stop">Stop!!</string>
-    <string name="action_settings">Iestatījumi</string>
+    <string name="iestatijumi">Iestatījumi</string>
+    <string name="setting_gr_skana">Audio iestatījumi</string>
+    <string name="setting_skana_komandas">Izvēlieties komandu signālus</string>
+    <string name="settings_audio_balss">Balss komandas</string>
+    <string name="settings_audio_beep">Skaņas signāls</string>
+    <string name="settings_audio_silence">Klusums</string>
+    <string name="settings_skana_minute">Laika brīdinājumi</string>
+    <string name="settings_skana_minuteDescription">Skaņas signāls ik minūti</string>
 </resources>

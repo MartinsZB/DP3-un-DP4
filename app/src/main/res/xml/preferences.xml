@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/setting_gr_skana">
+    <ListPreference
+        android:dialogTitle="@string/setting_skana_komandas"
+        android:entries="@array/skanas_nosaukumi"
+        android:entryValues="@array/skanas_id"
+        android:key="list"
+        android:summary="%s"
+        android:title="@string/setting_skana_komandas"
+        android:defaultValue="@string/settings_audio_balss"/>
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="check_box_preference_1"
+        android:title="@string/settings_skana_minute"
+        android:summary="@string/settings_skana_minuteDescription"/>
+    </PreferenceCategory>
+</PreferenceScreen>

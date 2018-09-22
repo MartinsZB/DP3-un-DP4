@@ -55,6 +55,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.martinszb.dp3undp4.MainActivity" />
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/iestatijumi"
+            android:parentActivityName=".MainActivity">
+            </activity>
     </application>
 
 </manifest>

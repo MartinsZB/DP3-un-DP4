@@ -16,18 +16,18 @@ import android.widget.TextView;
 
 public class TimerClockActivity extends AppCompatActivity {
 
-    Boolean clockComp;
-    CountDownTimer myTimer;
-    Boolean isRunning = false;
-    TextView typeText;
-    TextView sessionText;
-    TextView compText;
-    TextView counterText;
-    MediaPlayer mp;
-    MediaPlayer audioSagatavoties;
-    MediaPlayer audioUzmanibu;
-    MediaPlayer audioStarts;
-    MediaPlayer audioStop;
+    private Boolean clockComp;
+    private CountDownTimer myTimer;
+    private Boolean isRunning = false;
+    private TextView typeText;
+    private TextView sessionText;
+    private TextView compText;
+    private TextView counterText;
+    private MediaPlayer mp;
+    private MediaPlayer audioSagatavoties;
+    private MediaPlayer audioUzmanibu;
+    private MediaPlayer audioStarts;
+    private MediaPlayer audioStop;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -55,7 +55,7 @@ public class TimerClockActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_clock);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

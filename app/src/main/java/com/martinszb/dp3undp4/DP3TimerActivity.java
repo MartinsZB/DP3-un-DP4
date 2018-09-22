@@ -15,7 +15,7 @@ public class DP3TimerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dp3_timer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -25,7 +25,7 @@ public class DP3TimerActivity extends AppCompatActivity {
         Bundle extras = new Bundle();
         extras.putString("EXTRA_TYPE", "DP3");
         extras.putInt("EXTRA_SESSION", 0);
-        Switch compSwitch = (Switch) findViewById(R.id.switch1);
+        Switch compSwitch = findViewById(R.id.switch1);
         Boolean compState = compSwitch.isChecked();
         extras.putBoolean("EXTRA_COMPETITION", compState);
         intent.putExtras(extras);
@@ -36,7 +36,7 @@ public class DP3TimerActivity extends AppCompatActivity {
         Bundle extras = new Bundle();
         extras.putString("EXTRA_TYPE", "DP3");
         extras.putInt("EXTRA_SESSION", 1);
-        Switch compSwitch = (Switch) findViewById(R.id.switch1);
+        Switch compSwitch = findViewById(R.id.switch1);
         Boolean compState = compSwitch.isChecked();
         extras.putBoolean("EXTRA_COMPETITION", compState);
         intent.putExtras(extras);
