@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DP3 un DP4</string>
+    <string name="app_name">DP3 &amp; DP4</string>
     <string name="noteikumi">Noteikumi:</string>
     <string name="dp3_noteikumi">DP3 Noteikumi</string>
     <string name="dp4_noteikumi">DP4 Noteikumi</string>
@@ -52,6 +52,5 @@
     <string name="uzmanibu">Uzmanību!</string>
     <string name="starts">Starts!</string>
     <string name="stop">Stop!!</string>
-
-
+    <string name="action_settings">Iestatījumi</string>
 </resources>
