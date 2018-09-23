@@ -1,10 +1,12 @@
 package com.martinszb.dp3undp4;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,26 +19,27 @@ import android.widget.TextView;
 public class TimerClockActivity extends AppCompatActivity {
 
     private Boolean clockComp;
+    private String clockType;
+    private Integer clockSession;
     private CountDownTimer myTimer;
     private Boolean isRunning = false;
     private TextView typeText;
     private TextView sessionText;
     private TextView compText;
     private TextView counterText;
-    private MediaPlayer mp;
     private MediaPlayer audioSagatavoties;
     private MediaPlayer audioUzmanibu;
     private MediaPlayer audioStarts;
     private MediaPlayer audioStop;
+    private MediaPlayer audioMinute;
+    private Boolean minuteBeep;
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             onBackPressed();
-            //if (isRunning){
-            //    myTimer.cancel();
-            //}
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -47,6 +50,7 @@ public class TimerClockActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (isRunning) {
             myTimer.cancel();
+            isRunning = false;
         }
         finish();
     }
@@ -64,8 +68,8 @@ public class TimerClockActivity extends AppCompatActivity {
         //Getting extras from activity from previous activity
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String clockType = extras.getString("EXTRA_TYPE");
-        Integer clockSession = extras.getInt("EXTRA_SESSION");
+        clockType = extras.getString("EXTRA_TYPE");
+        clockSession = extras.getInt("EXTRA_SESSION");
         clockComp = extras.getBoolean("EXTRA_COMPETITION");
 
         //Initialize TextViews
@@ -74,19 +78,50 @@ public class TimerClockActivity extends AppCompatActivity {
         compText = findViewById(R.id.textView10);
         counterText = findViewById(R.id.textView11);
 
+        //Read the preferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String komanduVeids = prefs.getString(SettingsActivity.KEY_PREF_SOUND_LIST, "balss");
+        minuteBeep = prefs.getBoolean(SettingsActivity.KEY_PREF_MINUTE_BEEP, false);
 
-        //Check and set if sound is necessary
-        if (clockComp) {
-            compText.setText(getString(R.string.sound_off));
-            compText.setTextColor(Color.RED);
-        } else {
-            compText.setText(getString(R.string.sound_on));
-            //Initialize Sounds
+        //Set sounds
+        if (komanduVeids.equals("balss")) {
             audioSagatavoties = MediaPlayer.create(getApplicationContext(), R.raw.sagatavoties_mz_2s);
             audioUzmanibu = MediaPlayer.create(getApplicationContext(), R.raw.uzmanibu_mz_2s);
             audioStarts = MediaPlayer.create(getApplicationContext(), R.raw.starts_mz_1s);
             audioStop = MediaPlayer.create(getApplicationContext(), R.raw.stop_mz_1_5s);
+            audioMinute = MediaPlayer.create(getApplicationContext(), R.raw.beep_minute);
         }
+        else {
+            audioSagatavoties = MediaPlayer.create(getApplicationContext(), R.raw.beep_commands);
+            audioUzmanibu = MediaPlayer.create(getApplicationContext(), R.raw.beep_commands);
+            audioStarts = MediaPlayer.create(getApplicationContext(), R.raw.beep_commands);
+            audioStop = MediaPlayer.create(getApplicationContext(), R.raw.beep_commands);
+            audioMinute = MediaPlayer.create(getApplicationContext(), R.raw.beep_minute);
+        }
+
+        //Mute sounds if competition or silence in settings
+        if (komanduVeids.equals("klusums")) {
+            audioSagatavoties.setVolume(0,0);
+            audioUzmanibu.setVolume(0,0);
+            audioStarts.setVolume(0,0);
+            audioStop.setVolume(0,0);
+            audioMinute.setVolume(0,0);
+            compText.setText(getString(R.string.sound_off_in_settings));
+            compText.setTextColor(Color.RED);
+        }
+        else if (clockComp) {
+            audioSagatavoties.setVolume(0,0);
+            audioUzmanibu.setVolume(0,0);
+            audioStarts.setVolume(0,0);
+            audioStop.setVolume(0,0);
+            audioMinute.setVolume(0,0);
+            compText.setText(getString(R.string.sound_off));
+            compText.setTextColor(Color.RED);
+        }
+        else {
+            compText.setText(getString(R.string.sound_on));
+        }
+
         //Set timers for discipline and session
         if (clockType.equals("DP3") && clockSession == 0) {
             //DP3 preparing round
@@ -124,54 +159,59 @@ public class TimerClockActivity extends AppCompatActivity {
     }
 
     private void initTimer() {
-        if (clockComp) {
-            sessionText.setText(getString(R.string.sagatavoties));
-        } else {
-            sessionText.setText(getString(R.string.sagatavoties));
-            audioSagatavoties.start();
-        }
+        isRunning = true;
+        sessionText.setText(getString(R.string.sagatavoties));
+        audioSagatavoties.start();
     }
 
 
     private void startTimer(long time, final long tick, final long shootTime, final int id) {
         myTimer = new CountDownTimer(time, tick) {
+
             @Override
             public void onTick(long millisUntilFinished) {
                 if (millisUntilFinished / 1000 == 8 && id == 0) {
-                    if (clockComp) {
-                        sessionText.setText(getString(R.string.uzmanibu));
-                        counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
-                    } else {
                         sessionText.setText(getString(R.string.uzmanibu));
                         audioUzmanibu.start();
                         counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
-                    }
-                } else if (millisUntilFinished / 1000 == 1 && id == 1) {
-                    if (!clockComp) {
+                }
+                else if (millisUntilFinished / 1000 == 1 && id == 1) {
                         audioStop.start();
                         counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
-                    } else {
+                }
+                else if (id == 1 && clockType.equals("DP3") && clockSession == 1 && minuteBeep){
+                    if (millisUntilFinished / 1000 == 240 || millisUntilFinished / 1000 == 180 || millisUntilFinished / 1000 == 120 || millisUntilFinished / 1000 == 60 ) {
+                        audioMinute.start();
                         counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
                     }
-                } else {
-                    counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
+                    else {
+                        counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
+                    }
                 }
-                isRunning = true;
+                else if (id == 1 && clockType.equals("DP4") && clockSession == 0 && minuteBeep){
+                    if (millisUntilFinished / 1000 == 120 || millisUntilFinished / 1000 == 60) {
+                        audioMinute.start();
+                        counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
+                    }
+                    else {
+                        counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
+                    }
+                }
+                else {
+                        counterText.setText(String.format("%02d:%02d", (millisUntilFinished / 60000), (millisUntilFinished % 60000 / 1000)));
+                }
             }
 
             @Override
             public void onFinish() {
-                isRunning = false;
                 if (id == 0) {
-                    if (clockComp) {
-                        sessionText.setText(getString(R.string.starts));
-                    } else {
                         sessionText.setText(getString(R.string.starts));
                         audioStarts.start();
-                    }
                     startTimer(shootTime, tick, 0, 1);
-                } else {
+                }
+                else {
                     sessionText.setText(getString(R.string.stop));
+                    isRunning = false;
                 }
 
             }
