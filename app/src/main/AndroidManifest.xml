@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,17 +21,45 @@
         </activity>
         <activity
             android:name=".ShowRulesActivity"
-            android:parentActivityName=".MainActivity" />
+            android:label="@string/noteikumi"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.martinszb.dp3undp4.MainActivity" />
+        </activity>
         <activity
             android:name=".DP3TimerActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".DP4TimerActivity"
-            android:parentActivityName=".MainActivity" />
+            android:label="@string/dp3_timeri_nosaukums"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.martinszb.dp3undp4.MainActivity" />
+        </activity>
         <activity
             android:name=".TimerClockActivity"
-            android:parentActivityName=".TimerClockActivity"/>
-
+            android:label="@string/taimeri"
+            android:parentActivityName=".DP3TimerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.martinszb.dp3undp4.DP3TimerActivity" />
+        </activity>
+        <activity
+            android:name=".DP4TimerActivity"
+            android:label="@string/dp4_timeri_nosaukums"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.martinszb.dp3undp4.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/iestatijumi"
+            android:parentActivityName=".MainActivity">
+            </activity>
     </application>
 
 </manifest>

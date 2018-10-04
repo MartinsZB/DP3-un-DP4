@@ -11,3 +11,6 @@ Aplikācijā ir iekļauti disciplīnu noteikumi un timeri ar un bez skaņas.
 Plānā:
   1. Mērķu rezultātu pievienošana
   2. Treniņu piezīmes
+  
+  Aplikācija ir pieejama arī Google Play veikalā:
+  https://play.google.com/store/apps/details?id=com.martinszb.dp3undp4

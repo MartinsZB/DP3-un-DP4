@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DP3 un DP4</string>
+    <string name="app_name">DP3 &amp; DP4</string>
     <string name="noteikumi">Noteikumi:</string>
     <string name="dp3_noteikumi">DP3 Noteikumi</string>
     <string name="dp4_noteikumi">DP4 Noteikumi</string>
@@ -52,6 +52,13 @@
     <string name="uzmanibu">Uzmanību!</string>
     <string name="starts">Starts!</string>
     <string name="stop">Stop!!</string>
-
-
+    <string name="iestatijumi">Iestatījumi</string>
+    <string name="setting_gr_skana">Audio iestatījumi</string>
+    <string name="setting_skana_komandas">Izvēlieties komandu signālus</string>
+    <string name="settings_audio_balss">Balss komandas</string>
+    <string name="settings_audio_beep">Skaņas signāls</string>
+    <string name="settings_audio_silence">Klusums</string>
+    <string name="settings_skana_minute">Laika brīdinājumi</string>
+    <string name="settings_skana_minuteDescription">Skaņas signāls ik minūti</string>
+    <string name="sound_off_in_settings">Skaņas signāli izslēgti iestatījumos</string>
 </resources>

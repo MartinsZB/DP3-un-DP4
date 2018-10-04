@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="skanas_nosaukumi">
+        <item>@string/settings_audio_balss</item>
+        <item>@string/settings_audio_beep</item>
+        <item>@string/settings_audio_silence</item>
+    </string-array>
+    <string-array name="skanas_id">
+        <item>balss</item>
+        <item>beep</item>
+        <item>klusums</item>
+    </string-array>
+</resources>
