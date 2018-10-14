@@ -1,14 +1,18 @@
 package com.martinszb.dp3undp4;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -49,6 +53,26 @@ public class TimerClockActivity extends AppCompatActivity {
     private TableLayout shootTable;
     private int timerWait;
     private int timerTick;
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    // Requesting permission to RECORD_AUDIO
+    private boolean permissionToRecordAccepted = false;
+    private String [] permissions = {Manifest.permission.RECORD_AUDIO};
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case REQUEST_RECORD_AUDIO_PERMISSION:
+                permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+        }
+        if (!permissionToRecordAccepted ) {
+            clockReg = false;
+            shootTable.removeAllViews();
+        }
+
+    }
+
 
 
     @Override
@@ -98,6 +122,8 @@ public class TimerClockActivity extends AppCompatActivity {
         clockComp = extras.getBoolean("EXTRA_COMPETITION");
         clockReg = extras.getBoolean("EXTRA_REGISTER");
 
+
+
         //Initialize TextViews
         typeText = findViewById(R.id.textView8);
         sessionText = findViewById(R.id.textView9);
@@ -107,7 +133,11 @@ public class TimerClockActivity extends AppCompatActivity {
         //Shooting register
         shootTable = (TableLayout)findViewById(R.id.ShootTable);
         shootCount = 0;
-        if(!clockReg){
+        if(clockReg){
+            //Check permission
+            ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+        }
+        else {
             shootTable.removeAllViews();
         }
 
