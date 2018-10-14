@@ -61,4 +61,17 @@
     <string name="settings_skana_minute">Laika brīdinājumi</string>
     <string name="settings_skana_minuteDescription">Skaņas signāls ik minūti</string>
     <string name="sound_off_in_settings">Skaņas signāli izslēgti iestatījumos</string>
+    <string name="Stop_button">ATCELT</string>
+    <string name="Exit_button">IZIET</string>
+    <string name="izladet">Izlādēt</string>
+    <string name="Start_button">SĀKT</string>
+    <string name="shoot_ID">Nr.</string>
+    <string name="shoot_Time">Laiks</string>
+    <string name="shoot_Res">Ieskaite</string>
+    <string name="accept">Ieskaitīts</string>
+    <string name="not_accept">Neieskaitīts</string>
+    <string name="shoot_register">"Reģistrēt šāvienus   "</string>
+    <string name="register_switch_info">Reģistrēt šāvienus (tikai treniņa režīmā)</string>
+    <string name="settings_register_Shoot">Vienmēr reģistrēt šāvienus</string>
+    <string name="settings_register_shoot_Description">Šāvienu reģistrācija ieslēgta pēc noklusējuma</string>
 </resources>

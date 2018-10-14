@@ -15,5 +15,10 @@
         android:key="minute_beep_boolean"
         android:title="@string/settings_skana_minute"
         android:summary="@string/settings_skana_minuteDescription"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="register_shoot_boolean"
+            android:summary="@string/settings_register_shoot_Description"
+            android:title="@string/settings_register_Shoot" />
     </PreferenceCategory>
 </PreferenceScreen>
