@@ -5,7 +5,8 @@ Aplikācija DP3 un DP4 šaušanas disciplīnām.
 Aplikācija ir plānota lai palīdzētu trennēties un reģistrēt savu progresu šajās šaušanas disciplīnās.
 
 Aplikācijā ir iekļauti disciplīnu noteikumi un timeri ar un bez skaņas. Taimeru logā iespējams ieslēgt arī šāvienu reģistrēšanu (izmanto mikrofonu)
-
+<img src=https://github.com/MartinsZB/DP3-un-DP4/raw/master/Additions/Screenshoots/V1.2/Screenshot_1540649939.png width="100">
+<img src=https://github.com/MartinsZB/DP3-un-DP4/raw/master/Additions/Screenshoots/V1.2/Screenshot_1540649958.png width="100">
 <img src=https://github.com/MartinsZB/DP3-un-DP4/raw/master/Additions/Screenshoots/V1.2/Screenshot_1540650115.png width="100">
 
 
