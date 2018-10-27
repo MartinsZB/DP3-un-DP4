@@ -275,7 +275,7 @@ public class TimerClockActivity extends AppCompatActivity {
 
     private void startTimer(final long time, final long tick, final long shootTime, final int id) {
 
-        shootTimeMillis = toIntExact(time);
+        shootTimeMillis = (int) (long) time;
         myTimer = new CountDownTimer(time, tick) {
 
             @Override
@@ -283,7 +283,8 @@ public class TimerClockActivity extends AppCompatActivity {
                 Integer soundVolume = getAmplitude();
                 Integer regAmplitude = (32767 * registerLevel)/100;
                 if(millisUntilFinished <= (shootTimeMillis-shootDelay) && soundVolume >= regAmplitude) {
-                    shootTimeMillis = toIntExact(millisUntilFinished);
+                    //shootTimeMillis = toIntExact(millisUntilFinished);
+                    shootTimeMillis = (int) (long) millisUntilFinished;
                     String shootTime = String.format("%02d:%02d:%01d", (time - millisUntilFinished) / 60000, (time - millisUntilFinished) % 60000 / 1000, (time - millisUntilFinished) % 1000 / 100);
                     shootCount = shootCount + 1;
                     boolean inTime;
