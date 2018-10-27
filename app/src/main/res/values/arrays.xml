@@ -10,4 +10,52 @@
         <item>beep</item>
         <item>klusums</item>
     </string-array>
+    <string-array name="Shoot_Level_name">
+        <item>60%</item>
+        <item>65%</item>
+        <item>70%</item>
+        <item>75%</item>
+        <item>80%</item>
+        <item>85%</item>
+        <item>90%</item>
+        <item>95%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="Shoot_Level_value">
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="Echo_time_name">
+        <item>0.0s</item>
+        <item>0.1s</item>
+        <item>0.2s</item>
+        <item>0.3s</item>
+        <item>0.4s</item>
+        <item>0.5s</item>
+        <item>0.6s</item>
+        <item>0.7s</item>
+        <item>0.8s</item>
+        <item>0.9s</item>
+        <item>1.0s</item>
+    </string-array>
+    <string-array name="Echo_time_value">
+        <item>0</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+    </string-array>
 </resources>

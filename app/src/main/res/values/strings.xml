@@ -74,4 +74,8 @@
     <string name="register_switch_info">Reģistrēt šāvienus (tikai treniņa režīmā)</string>
     <string name="settings_register_Shoot">Vienmēr reģistrēt šāvienus</string>
     <string name="settings_register_shoot_Description">Šāvienu reģistrācija ieslēgta pēc noklusējuma</string>
+    <string name="setting_gr_register">Šāvienu reģistra iestatījumi</string>
+    <string name="settings_register_level">Šāviena skaņas līmenis</string>
+    <string name="settings_register_level_info">Skaņa virs šī līmeņa tiks reģistrēta kā šaviens</string>
+    <string name="settings_echo_delay">Šāviena atbalss aizture</string>
 </resources>

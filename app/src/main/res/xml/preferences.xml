@@ -15,10 +15,26 @@
         android:key="minute_beep_boolean"
         android:title="@string/settings_skana_minute"
         android:summary="@string/settings_skana_minuteDescription"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/setting_gr_register">
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="register_shoot_boolean"
             android:summary="@string/settings_register_shoot_Description"
             android:title="@string/settings_register_Shoot" />
+        <ListPreference
+            android:defaultValue="80"
+            android:entries="@array/Shoot_Level_name"
+            android:entryValues="@array/Shoot_Level_value"
+            android:key="register_level_int"
+            android:summary="%s"
+            android:title="@string/settings_register_level" />
+        <ListPreference
+            android:defaultValue="200"
+            android:entries="@array/Echo_time_name"
+            android:entryValues="@array/Echo_time_value"
+            android:key="register_delay_millis_int"
+            android:summary="%s"
+            android:title="@string/settings_echo_delay" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,7 +1,6 @@
 package com.martinszb.dp3undp4;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -15,22 +14,18 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import static java.lang.Math.toIntExact;
 
 public class TimerClockActivity extends AppCompatActivity {
 
-    private Boolean clockComp;
     private String clockType;
     private Integer clockSession;
     private Boolean clockReg;
@@ -38,7 +33,6 @@ public class TimerClockActivity extends AppCompatActivity {
     private Boolean isRunning = false;
     private TextView typeText;
     private TextView sessionText;
-    private TextView compText;
     private TextView counterText;
     private MediaPlayer audioSagatavoties;
     private MediaPlayer audioUzmanibu;
@@ -52,9 +46,11 @@ public class TimerClockActivity extends AppCompatActivity {
     private Integer shootCount;
     private TableLayout shootTable;
     private int timerWait;
-    private int timerTick;
-    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    private Integer registerLevel;
+    private Integer shootDelay;
+    private Integer shootTimeMillis;
     // Requesting permission to RECORD_AUDIO
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private boolean permissionToRecordAccepted = false;
     private String [] permissions = {Manifest.permission.RECORD_AUDIO};
 
@@ -106,7 +102,7 @@ public class TimerClockActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //screen on during timer
 
-        exitButton = (Button)findViewById(R.id.button5);
+        exitButton = findViewById(R.id.button5);
         exitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -119,7 +115,7 @@ public class TimerClockActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         clockType = extras.getString("EXTRA_TYPE");
         clockSession = extras.getInt("EXTRA_SESSION");
-        clockComp = extras.getBoolean("EXTRA_COMPETITION");
+        Boolean clockComp = extras.getBoolean("EXTRA_COMPETITION");
         clockReg = extras.getBoolean("EXTRA_REGISTER");
 
 
@@ -127,11 +123,11 @@ public class TimerClockActivity extends AppCompatActivity {
         //Initialize TextViews
         typeText = findViewById(R.id.textView8);
         sessionText = findViewById(R.id.textView9);
-        compText = findViewById(R.id.textView10);
+        TextView compText = findViewById(R.id.textView10);
         counterText = findViewById(R.id.textView11);
 
         //Shooting register
-        shootTable = (TableLayout)findViewById(R.id.ShootTable);
+        shootTable = findViewById(R.id.ShootTable);
         shootCount = 0;
         if(clockReg){
             //Check permission
@@ -146,6 +142,8 @@ public class TimerClockActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String komanduVeids = prefs.getString(SettingsActivity.KEY_PREF_SOUND_LIST, "balss");
         minuteBeep = prefs.getBoolean(SettingsActivity.KEY_PREF_MINUTE_BEEP, false);
+        registerLevel = Integer.parseInt(prefs.getString(SettingsActivity.KEY_PREF_SHOOT_LEVEL, "80"));
+        shootDelay = Integer.parseInt(prefs.getString(SettingsActivity.KEY_PREF_SHOOT_DELAY, "100"));
 
         //Set sounds
         if (komanduVeids.equals("balss")) {
@@ -216,7 +214,7 @@ public class TimerClockActivity extends AppCompatActivity {
 
     private void initTimer() {
         isRunning = true;
-        timerTick = 100;
+        int timerTick = 100;
         audioSagatavoties.start();
         //Set timers for discipline and session
         if (clockType.equals("DP3") && clockSession == 0) {
@@ -277,25 +275,27 @@ public class TimerClockActivity extends AppCompatActivity {
 
     private void startTimer(final long time, final long tick, final long shootTime, final int id) {
 
+        shootTimeMillis = toIntExact(time);
         myTimer = new CountDownTimer(time, tick) {
+
             @Override
             public void onTick(long millisUntilFinished) {
-                Double soundVolume = getAmplitude();
-                if (soundVolume > 32766){
+                Integer soundVolume = getAmplitude();
+                Integer regAmplitude = (32767 * registerLevel)/100;
+                if(millisUntilFinished <= (shootTimeMillis-shootDelay) && soundVolume >= regAmplitude) {
+                    shootTimeMillis = toIntExact(millisUntilFinished);
                     String shootTime = String.format("%02d:%02d:%01d", (time - millisUntilFinished) / 60000, (time - millisUntilFinished) % 60000 / 1000, (time - millisUntilFinished) % 1000 / 100);
                     shootCount = shootCount + 1;
                     boolean inTime;
-                    if (id == 1){
+                    if (id == 1) {
                         inTime = true;
-                    }
-                    else {
+                    } else {
                         inTime = false;
                     }
                     addShoot(shootCount.toString(), shootTime, inTime);
-
                 }
                 if (clockReg) {
-                    if (((((time - millisUntilFinished) / 100) == 3) && (id == 1)) || ((((time - millisUntilFinished) / 100) == 3) && (id == 2))) {
+                    if (((((time - millisUntilFinished) / 100) == 4) && (id == 1)) || ((((time - millisUntilFinished) / 100) == 4) && (id == 2))) {
                         startRecorder();
                     }
                 }
@@ -338,7 +338,7 @@ public class TimerClockActivity extends AppCompatActivity {
             public void onFinish() {
                 stopRecorder();
                 //Time to unload in milliseconds
-                int unloadTime = 15000;
+                int unloadTime = 10000;
 
                 if (id == 0) {
                     sessionText.setText(getString(R.string.starts));
@@ -404,7 +404,7 @@ public class TimerClockActivity extends AppCompatActivity {
         }
     }
 
-    public double getAmplitude() {
+    public Integer getAmplitude() {
         if (mRecorder != null)
             return  mRecorder.getMaxAmplitude();
         else
