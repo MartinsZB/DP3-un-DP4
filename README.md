@@ -6,7 +6,7 @@ Aplikācija ir plānota lai palīdzētu trennēties un reģistrēt savu progresu
 
 Aplikācijā ir iekļauti disciplīnu noteikumi un timeri ar un bez skaņas. Taimeru logā iespējams ieslēgt arī šāvienu reģistrēšanu (izmanto mikrofonu)
 
-<img-src=https://github.com/MartinsZB/DP3-un-DP4/raw/master/Additions/Screenshoots/V1.2/Screenshot_1540650115.png>
+<img src=https://github.com/MartinsZB/DP3-un-DP4/raw/master/Additions/Screenshoots/V1.2/Screenshot_1540650115.png width="100">
 
 
 Plānā:
